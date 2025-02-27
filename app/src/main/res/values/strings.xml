@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Assignment_1_SagarParmar_0857562</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="your_name">Your name</string>
+    <string name="submit">Submit</string>
 </resources>
