@@ -37,11 +37,6 @@ class MainActivity : AppCompatActivity() {
 
             if (name.isNotEmpty() && amount.isNotEmpty()) {
                 expenseList.add(Expense(name, amount))
-                try {
-                    adapter.notifyDataSetChanged()
-                } catch (e: Exception) {
-                    TODO("Not yet implemented")
-                }
                 expenseInput.text.clear()
                 expenseInputAmount.text.clear()
             }
