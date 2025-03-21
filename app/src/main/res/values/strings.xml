@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Assignment_1_SagarParmar_0857562</string>
     <string name="show_name">Show Name</string>
+    <string name="Add_Expenses">Add_expenses</string>
+    <string name="Addexpenses">Add Expenses</string>
+    <string name="hello_world">Expense Tracker</string>
+    <string name="expense_tracker">Expense Tracker</string>
 </resources>
