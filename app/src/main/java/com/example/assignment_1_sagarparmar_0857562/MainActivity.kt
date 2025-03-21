@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 expenseList.add(Expense(name, amount))
                 expenseInput.text.clear()
                 expenseInputAmount.text.clear()
+                recyclerView.adapter = adapter
             }
         }
     }
