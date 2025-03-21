@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+
         // Set up the Add Expense button
         submitButton.setOnClickListener {
             val name = expenseInput.text.toString()
