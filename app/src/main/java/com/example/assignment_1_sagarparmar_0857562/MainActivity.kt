@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var expenseList: ArrayList<Expense>
     private lateinit var adapter: ExpenseAdapter
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,11 +36,6 @@ class MainActivity : AppCompatActivity() {
 
             if (name.isNotEmpty() && amount.isNotEmpty()) {
                 expenseList.add(Expense(name, amount))
-                try {
-                    adapter.notifyDataSetChanged()
-                } catch (e: Exception) {
-                    TODO("Not yet implemented")
-                }
                 expenseInput.text.clear()
                 expenseInputAmount.text.clear()
             }
