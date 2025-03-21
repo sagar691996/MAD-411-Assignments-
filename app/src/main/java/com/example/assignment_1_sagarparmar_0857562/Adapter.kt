@@ -25,14 +25,14 @@ class ExpenseAdapter(private val expenseList: ArrayList<MainActivity.Expense>) :
         return ExpenseViewHolder(view)
     }
 
-    //OnBindingViewHolder is fethcing the data from the holder and added to the single tabview holder
+    //OnBindingViewHolder is fetching the data from the holder and added to the single tabview holder
     override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
         val expense = expenseList[position]
         holder.expensesName.text = expense.name
         holder.expenseAmount.text = expense.amount
         holder.deleteButton.setOnClickListener {
-            expenseList.removeAt(position)
-            notifyItemRemoved(position)
+            expenseList.removeAt(position) // remove the item from the Arraylist
+            notifyItemRemoved(position) // used to remove the item
         }
     }
 
