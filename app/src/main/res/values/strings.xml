@@ -5,4 +5,11 @@
     <string name="Addexpenses">Add Expenses</string>
     <string name="hello_world">Expense Tracker</string>
     <string name="expense_tracker">Expense Tracker</string>
+    <string name="enter_expenses">Enter Expenses</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="delete">Delete</string>
+    <string name="item">Item</string>
+    <string name="add_expenses">Add Expenses</string>
+    <string name="expense_name">Expense Name</string>
+    <string name="amount">Amount</string>
 </resources>
