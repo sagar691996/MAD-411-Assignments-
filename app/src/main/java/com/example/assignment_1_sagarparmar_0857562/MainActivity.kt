@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
 
             if (name.isNotEmpty() && amount.isNotEmpty()) {
                 expenseList.add(Expense(name, amount))
-                expenseInput.text.clear()
-                expenseInputAmount.text.clear()
-                recyclerView.adapter = adapter
+                expenseInput.text.clear() //Clear the input
+                expenseInputAmount.text.clear() // clear the amount edit view
+                recyclerView.adapter = adapter // Display the list
             }
         }
     }
