@@ -30,12 +30,8 @@ class ExpenseAdapter(private val expenseList: ArrayList<MainActivity.Expense>) :
         val expense = expenseList[position]
         holder.expensesName.text = expense.name
         holder.expenseAmount.text = expense.amount
-
-        // Handle the delete button click
         holder.deleteButton.setOnClickListener {
-            expenseList.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, expenseList.size)
+            expenseList.clear()
         }
     }
 
