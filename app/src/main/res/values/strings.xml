@@ -11,4 +11,5 @@
     <string name="item">Item</string>
     <string name="add_expenses">Add Expenses</string>
     <string name="financial_tips">Financial Tips</string>
+    <string name="footer_content">Footer Content</string>
 </resources>
