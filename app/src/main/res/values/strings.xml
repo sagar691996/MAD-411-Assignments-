@@ -10,6 +10,4 @@
     <string name="delete">Delete</string>
     <string name="item">Item</string>
     <string name="add_expenses">Add Expenses</string>
-    <string name="expense_name">Expense Name</string>
-    <string name="amount">Amount</string>
 </resources>

@@ -1,6 +1,6 @@
 package com.example.assignment_1_sagarparmar_0857562
 
-import android.annotation.SuppressLint
+
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
             if (name.isNotEmpty() && amount.isNotEmpty()) {
                 expenseList.add(Expense(name, amount))
+
                 expenseInput.text.clear() //Clear the input
                 expenseInputAmount.text.clear() // clear the amount edit view
                 recyclerView.adapter = adapter // Display the list
