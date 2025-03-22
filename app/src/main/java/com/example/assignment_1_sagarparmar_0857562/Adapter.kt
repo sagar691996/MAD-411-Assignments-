@@ -1,10 +1,12 @@
 package com.example.assignment_1_sagarparmar_0857562
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 
 //this class is for the individual expenses
@@ -15,7 +17,8 @@ class ExpenseAdapter(private val expenseList: ArrayList<MainActivity.Expense>) :
     class ExpenseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val expensesName: TextView = itemView.findViewById(R.id.expensesName)
         val expenseAmount: TextView = itemView.findViewById(R.id.expenseAmount)
-        val deleteButton: Button = itemView.findViewById(R.id.delete_button)
+        val deleteButton: Button = itemView.findViewById(R.id.delete_button) 
+        val showDetails : Button = itemView.findViewById(R.id.show_details)
     }
 
     //oncreateViewHolder is fetch the data from the parent class to single tabview recycleView ad return the proper details to perform task
@@ -27,6 +30,7 @@ class ExpenseAdapter(private val expenseList: ArrayList<MainActivity.Expense>) :
 
     //OnBindingViewHolder is fetching the data from the holder and added to the single tabview holder
     override fun onBindViewHolder(holder: ExpenseViewHolder, position: Int) {
+
         val expense = expenseList[position]
         holder.expensesName.text = expense.name
         holder.expenseAmount.text = expense.amount
@@ -34,6 +38,16 @@ class ExpenseAdapter(private val expenseList: ArrayList<MainActivity.Expense>) :
         holder.deleteButton.setOnClickListener {
             expenseList.removeAt(position) // remove the item from the Arraylist
             notifyItemRemoved(position) // used to remove the item
+        }
+
+        holder.showDetails.setOnClickListener {
+
+            //used the context for the the data fetching
+            val context = holder.itemView.context
+            val intent = Intent(context, ExpenseDetailsActivity::class.java)// Calling the other pages to show the text
+            intent.putExtra("name", expense.name)//Fetch the name
+            intent.putExtra("amount", expense.amount) // Fetch the Amount
+            context.startActivity(intent)
         }
     }
 
