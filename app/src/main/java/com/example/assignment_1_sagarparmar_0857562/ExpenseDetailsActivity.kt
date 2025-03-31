@@ -10,17 +10,22 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class ExpenseDetailsActivity : AppCompatActivity() {
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.expense_viewtable)
 
-        // Retrieve the data from the previous page
-        val name = intent.getStringExtra("name")
-        val amount = intent.getStringExtra("amount")
+        val expensesName1 =findViewById<TextView>(R.id.expensesName1)
 
-        findViewById<TextView>(R.id.expensesName).text = "Name: $name"
-        findViewById<TextView>(R.id.expensesAmount).text = "Amount: $amount"
+        val expensesAmount1 =findViewById<TextView>(R.id.expenseAmount1)
+
+
+
+        val name = intent.getStringExtra("COUNTER_NAME")
+        val amount = intent.getStringExtra("COUNTER_AMOUNT")
+
+        expensesName1.text ="Name: $name"
+        expensesAmount1.text = "Amount: $amount"
 
 
     }

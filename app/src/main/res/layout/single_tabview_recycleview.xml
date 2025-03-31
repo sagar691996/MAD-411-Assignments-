@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Expense Name"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -45,12 +46,12 @@
         android:layout_marginRight="30dp"
         android:text="Delete" />
 
-        <Button
-            android:id="@+id/show_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Show Details" />
+    <Button
+        android:id="@+id/show_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Show Details" />
 
     </LinearLayout>
 
