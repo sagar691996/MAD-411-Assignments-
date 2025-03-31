@@ -32,6 +32,7 @@ class ExpenseAdapter(private val expenseList: ArrayList<MainActivity.Expense>) :
         holder.deleteButton.setOnClickListener {
             expenseList.removeAt(position)
             notifyItemRemoved(position)
+            (holder.itemView.context as MainActivity).saveExpenses()
         }
 
         holder.showDetails.setOnClickListener {

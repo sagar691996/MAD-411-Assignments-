@@ -1,5 +1,13 @@
 package com.example.assignment_1_sagarparmar_0857562
 
+import android.content.Context
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,9 +16,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.motion.widget.KeyPosition
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -39,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         val browserButton = findViewById<Button>(R.id.browseButton)
 
         // Initialize RecyclerView and Adapter
-        expenseList = ArrayList()
+        expenseList = loadExpenses()
         adapter = ExpenseAdapter(expenseList)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -51,10 +56,14 @@ class MainActivity : AppCompatActivity() {
 
             if (name.isNotEmpty() && amount.isNotEmpty()) {
                 val expenseAmount = amount.toDouble()
-                expenseList.add(Expense(name, amount))
+                val expense = Expense(name, amount)
+                expenseList.add(expense)
 
                 // Update FooterFragment with the new total
                 updateFooterExpense(expenseAmount)
+
+                // Save expenses to file
+                saveExpenses()
 
                 // Clear input fields and refresh RecyclerView
                 expenseInput.text.clear()
@@ -98,6 +107,38 @@ class MainActivity : AppCompatActivity() {
     // Function to update the total value in FooterFragment
     private fun updateFooterExpense(value: Double) {
         footerFragment.updateTotalValue(value)
+    }
+
+    // Method to load expenses from the file
+    private fun loadExpenses(): ArrayList<Expense> {
+        val fileName = "expenses.json"
+        val expenses = ArrayList<Expense>()
+        try {
+            val fileInputStream: FileInputStream = openFileInput(fileName)
+            val inputStreamReader = InputStreamReader(fileInputStream)
+            val gson = Gson()
+            val expenseListType = object : TypeToken<ArrayList<Expense>>() {}.type
+            val loadedExpenses: ArrayList<Expense> = gson.fromJson(inputStreamReader, expenseListType)
+            expenses.addAll(loadedExpenses)
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error loading expenses", e)
+        }
+        return expenses
+    }
+
+    // Method to save expenses to the file
+    fun saveExpenses() {
+        val fileName = "expenses.json"
+        try {
+            val fileOutputStream: FileOutputStream = openFileOutput(fileName, Context.MODE_PRIVATE)
+            val outputStreamWriter = OutputStreamWriter(fileOutputStream)
+            val gson = Gson()
+            val json = gson.toJson(expenseList)
+            outputStreamWriter.write(json)
+            outputStreamWriter.close()
+        } catch (e: Exception) {
+            Log.e("MainActivity", "Error saving expenses", e)
+        }
     }
 
     // Data class to represent an Expense
